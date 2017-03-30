@@ -17,6 +17,9 @@ httpd_vhost 'users' do
 end
 
 httpd_vhost 'admins' do
+  site_name 'admins'
+  site_port 8080
+  action :create
   notifies :restart, 'service[httpd]'
 end
 
