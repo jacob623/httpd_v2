@@ -47,7 +47,7 @@ describe 'httpd::default' do
       it 'creates a new home page' do
         expect(chef_run).to render_file('/srv/apache/admins/html/index.html').with_content('<h1>Welcome admins!</h1>')
       end
-      
+
     end
   end
 end
