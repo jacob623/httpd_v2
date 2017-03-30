@@ -10,6 +10,7 @@ file '/var/www/html/index.html' do
 end
 
 httpd_vhost 'admins' do
+  site_name 'admins'
   action :create
 end
 
