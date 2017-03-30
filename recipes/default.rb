@@ -6,10 +6,12 @@
 package 'httpd'
 
 httpd_vhost 'welcome' do
+  notifies :restart, 'service[httpd]'
   action :remove
 end
 
 httpd_vhost 'users' do
+  notifies :restart, 'service[httpd]'
 end
 
 httpd_vhost 'admins' do

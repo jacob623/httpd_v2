@@ -14,7 +14,6 @@ action :create do
     source 'conf.erb'
     mode '0644'
     variables(document_root: "/srv/apache/#{site_name}/html", port: site_port)
-    notifies :restart, 'service[httpd]'
   end
 
   file "/srv/apache/#{site_name}/html/index.html" do
