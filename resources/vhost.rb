@@ -7,12 +7,7 @@ action :create do
     mode '0755'
   end
 
-  directory '/etc/httpd/conf/d' do
-    recursive true
-    mode '0755'
-  end
-
-  template "/etc/httpd/conf/d/#{site_name}.conf" do
+  template "/etc/httpd/conf.d/#{site_name}.conf" do
     source 'conf.erb'
     mode '0644'
     variables(document_root: "/srv/apache/#{site_name}/html", port: 8080)
