@@ -1,6 +1,6 @@
 
 property :site_name, String, name_attribute: true
-property :site_port, Integer
+property :site_port, Integer, default: 80
 
 default_action :create
 

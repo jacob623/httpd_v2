@@ -10,7 +10,6 @@ httpd_vhost 'welcome' do
 end
 
 httpd_vhost 'users' do
-  site_port 80
 end
 
 httpd_vhost 'admins' do
