@@ -1,6 +1,8 @@
 
-property :site_name, String
+property :site_name, String, name_attribute: true
 property :site_port, Integer
+
+default_action :create
 
 action :create do
   directory "/srv/apache/#{site_name}/html" do
