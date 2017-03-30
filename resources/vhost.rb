@@ -1,5 +1,6 @@
 
 property :site_name, String
+property :site_port, Fixnum
 
 action :create do
   directory "/srv/apache/#{site_name}/html" do
@@ -10,7 +11,7 @@ action :create do
   template "/etc/httpd/conf.d/#{site_name}.conf" do
     source 'conf.erb'
     mode '0644'
-    variables(document_root: "/srv/apache/#{site_name}/html", port: 8080)
+    variables(document_root: "/srv/apache/#{site_name}/html", port: site_port)
     notifies :restart, 'service[httpd]'
   end
 

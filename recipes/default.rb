@@ -11,6 +11,7 @@ end
 
 httpd_vhost 'admins' do
   site_name 'admins'
+  site_port 8080
   action :create
 end
 
