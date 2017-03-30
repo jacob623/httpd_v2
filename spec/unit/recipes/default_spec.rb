@@ -29,10 +29,19 @@ describe 'httpd::default' do
       expect(chef_run).to enable_service('httpd')
     end
 
-    describe 'for the default site' do
-      it 'writes out a new home page' do
-        expect(chef_run).to render_file('/var/www/html/index.html').with_content('<h1>Welcome home!</h1>')
+     describe 'for the users site' do
+      it 'creates the directory' do
+        expect(chef_run).to create_directory('/srv/apache/users/html')
       end
+
+      it 'creats the configuration' do
+        expect(chef_run).to render_file('/etc/httpd/conf.d/users.conf')
+      end
+
+      it 'creates a new home page' do
+        expect(chef_run).to render_file('/srv/apache/users/html/index.html').with_content('<h1>Welcome users!</h1>')
+      end
+
     end
 
     describe 'for the admin site' do

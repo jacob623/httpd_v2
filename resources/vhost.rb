@@ -1,6 +1,6 @@
 
 property :site_name, String
-property :site_port, Fixnum
+property :site_port, Integer
 
 action :create do
   directory "/srv/apache/#{site_name}/html" do
@@ -19,3 +19,14 @@ action :create do
     content "<h1>Welcome #{site_name}!</h1>"
   end
 end
+
+action :remove do
+  directory "/srv/apache/#{site_name}/html" do
+    action :delete
+  end
+
+  file "/etc/httpd/conf.d/#{site_name}.conf" do
+    action :delete
+  end
+end
+
